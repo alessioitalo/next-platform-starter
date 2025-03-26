@@ -1,9 +1,3 @@
 [build]
   publish = ".next"
   command = "npm run build"
-
-[[redirects]]
-  from = "/#invite_token=*"
-  to = "/admin-ttzpubxivj/#invite_token=:splat"
-  status = 301
-  force = true
