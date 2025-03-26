@@ -1,0 +1,97 @@
+backend:
+  branch: main
+  repo: alessioitalo/next-platform-starter
+  name: git-gateway
+  commit_messages:
+    create: Create {{collection}} “{{slug}}”
+    update: Update {{collection}} “{{slug}}”
+    delete: Delete {{collection}} “{{slug}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
+    openAuthoring: '{{message}}'
+publish_mode: editorial_workflow
+site_url:  https://friendly-lily-ba7b3f.netlify.app/
+display_url:  https://friendly-lily-ba7b3f.netlify.app/
+media_folder: "apps/fe/website-next/public/media"
+public_folder: "/media"
+i18n:
+  structure: multiple_files
+  locales: [en, es, lt]
+  default_lcale: en
+collections:
+  # Root Region
+  - name: "root_pages"
+    label: "Root Pages"
+    folder: "apps/fe/website-next/src/data/root"
+    i18n:
+      locales: [en, es]
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "root-homepage{{locale}}"
+    summary: "Root Homepage {{locale}}"
+    fields:
+      - label: "Home"
+        name: "home"
+        widget: "object"
+        i18n: true
+        fields:
+          - { label: "Title", name: "title", widget: "string", i18n: true }
+          - { label: "Description", name: "description", widget: "string", i18n: true }
+  # EU Region
+  - name: "eu_pages"
+    label: "EU Pages"
+    folder: "apps/fe/website-next/src/data/eu"
+    i18n:
+      locales: [en, es, lt]
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "eu-homepage{{locale}}"
+    summary: "EU Homepage {{locale}}"
+    fields:
+      - label: "Home"
+        name: "home"
+        i18n: true
+        widget: "object"
+        fields:
+          - { label: "Title", name: "title", widget: "string", i18n: true }
+          - { label: "Description", name: "description", widget: "string", i18n: true }
+  # UK Region
+  - name: "uk_pages"
+    label: "UK Pages"
+    folder: "apps/fe/website-next/src/data/uk"
+    create: true
+    i18n:
+      locales: [en]
+    format: "json"
+    extension: "json"
+    slug: "uk-homepage{{locale}}"
+    summary: "UK Homepage {{locale}}"
+    fields:
+      - label: "Home"
+        name: "home"
+        i18n: true
+        widget: "object"
+        fields:
+          - { label: "Title", name: "title", widget: "string", i18n: true }
+          - { label: "Description", name: "description", widget: "string", i18n: true }
+  # US Region
+  - name: "us_pages"
+    label: "US Pages"
+    folder: "apps/fe/website-next/src/data/us"
+    create: true
+    i18n:
+      locales: [en, es]
+    format: "json"
+    extension: "json"
+    slug: "us-homepage{{locale}}"
+    summary: "US Homepage {{locale}}"
+    fields:
+      - label: "Home"
+        name: "home"
+        i18n: true
+        widget: "object"
+        fields:
+          - { label: "Title", name: "title", widget: "string", i18n: true }
+          - { label: "Description", name: "description", widget: "string", i18n: true }
