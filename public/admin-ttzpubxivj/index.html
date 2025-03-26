@@ -10,19 +10,13 @@
     <!-- Decap CMS will auto-initialize -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
- if (window.netlifyIdentity) {
+      // Handle invite tokens in the admin page
+      if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin-ttzpubxivj/";
-            });
-          // } else {
-          //   // User is already logged in, make sure they're directed to the admin
-          //   const hash = window.location.hash;
-          //   if (hash && hash.startsWith('#invite_token=')) {
-          //     const token = hash.replace('#invite_token=', '');
-          //     window.netlifyIdentity.acceptInvite(token);
-          //   }
+          // Check for invite token in URL
+          if (!user && window.location.hash && window.location.hash.startsWith('#invite_token=')) {
+            const token = window.location.hash.replace('#invite_token=', '');
+            window.netlifyIdentity.acceptInvite(token);
           }
         });
       }
