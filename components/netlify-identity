@@ -1,0 +1,27 @@
+// app/components/NetlifyIdentityHandler.js
+'use client'
+
+import { useEffect } from 'react';
+
+export default function NetlifyIdentityHandler() {
+  useEffect(() => {
+    // Load the Netlify Identity widget
+    if (typeof window !== 'undefined') {
+      const netlifyIdentity = window.netlifyIdentity;
+      if (netlifyIdentity) {
+        netlifyIdentity.on('init', user => {
+          if (!user) {
+            netlifyIdentity.on('login', () => {
+              document.location.href = '/admin-ttzpubxivj/';
+            });
+          } else if (window.location.hash && window.location.hash.startsWith('#invite_token=')) {
+            const token = window.location.hash.replace('#invite_token=', '');
+            window.location.href = `/admin-ttzpubxivj/#invite_token=${token}`;
+          }
+        });
+      }
+    }
+  }, []);
+  
+  return null;
+}
